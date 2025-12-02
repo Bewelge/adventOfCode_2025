@@ -13,7 +13,6 @@ window.onload = () => {
 
 			const ranges = text
 				.split(",")
-				// .map(str => str.split(" "))
 				.map(range => range.split("-"))
 				.map(([start, end]) => ({ start: parseInt(start), end: parseInt(end) }))
 
@@ -42,18 +41,6 @@ window.onload = () => {
 				}
 			})
 			console.log(counterP1)
-
-			// console.log(isOnlyPattern("12312", "12"))
-			// console.log(isOnlyPattern("1212", "12"))
-			// console.log(isOnlyPattern("1212121212", "12"))
-			// console.log(isOnlyPattern("12431243", "1243"))
-			// console.log(isOnlyPattern("124312432", "1243"))
-			// console.log(hasNoRepeatingPattern("1212"))
-			// console.log(hasNoRepeatingPattern("121111"))
-			console.log(hasNumRepeatingPattern("11"))
-			console.log(hasNumRepeatingPattern("1111"))
-			console.log(hasNumRepeatingPattern("111"))
-			console.log(hasNumRepeatingPattern("1212"))
 		})
 }
 
@@ -80,12 +67,6 @@ function hasNumRepeatingPattern(num) {
 }
 function isOnlyPattern(numString, pattern) {
 	for (let i = 0; i < numString.length; i += pattern.length) {
-		// console.log(
-		// 	i,
-		// 	pattern.length,
-		// 	numString,
-		// 	numString.slice(i, pattern.length),
-		// )
 		if (numString.length - i < pattern.length) {
 			return false
 		}
