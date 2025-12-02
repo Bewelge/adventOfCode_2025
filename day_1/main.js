@@ -9,44 +9,9 @@ window.onload = () => {
 			ct = cnv.getContext("2d")
 			ct.font = "20px Arial black"
 
-			console.log(text)
-
 			const instructions = text
 				.split("\r\n")
-				// .map(str => str.split(" "))
-
 				.map(spl => ({ d: spl[0], amt: parseInt(spl.slice(1)) }))
-
-			console.log(instructions)
-			const modifier = { L: -1, R: 1 }
-			let dial = 50
-			let passwordV1 = 0
-			let passwordV2 = 0
-			const mod = (input, mod) => ((input % mod) + mod) % mod
-			instructions.forEach(ins => {
-				const { d: direction, amt: turnsData } = ins
-				// Calculate the full rotations already made and how much we have left to rotate afterwards
-				const turns = turnsData
-				const rotations = Math.floor(turns / 100)
-				const remainder = turns - rotations * 100
-
-				const updatedDial = dial + modifier[direction] * remainder
-
-				// If we arrive at exactly 0 we increment the password
-				if (mod(updatedDial, 100) === 0) {
-					passwordV1 += 1
-				}
-
-				// Add all full rotations and calculate if we rotate still with the remainder
-				passwordV2 += rotations
-				if ((dial !== 0 && updatedDial <= 0) || updatedDial > 99) {
-					passwordV2 += 1
-				}
-
-				// Update dial to new position
-				dial = mod(updatedDial, 100)
-			})
-			console.log(passwordV1, passwordV2)
 
 			let curVal = 50
 			let counter = 0
